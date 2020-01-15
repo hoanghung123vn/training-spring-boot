@@ -38,8 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailServiceImpl) // Cung cáp userservice cho spring security
                 .passwordEncoder(passwordEncoder()); // cung cấp password encoder
     }
@@ -47,13 +46,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .cors()
-                .and()
-                .csrf()
-                .disable()
-                .authorizeRequests()
-                .antMatchers("/api/v1/login").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
-                .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
+            .cors()
+            .and()
+            .csrf()
+            .disable()
+            .authorizeRequests()
+            .antMatchers("/api/v1/login").permitAll() // Cho phép tất cả mọi người truy cập vào 2 địa chỉ này
+            .anyRequest().authenticated(); // Tất cả các request khác đều cần phải xác thực mới được truy cập
 
         // Thêm một lớp Filter kiểm tra jwt
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

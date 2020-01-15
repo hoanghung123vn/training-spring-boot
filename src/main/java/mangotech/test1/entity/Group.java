@@ -1,16 +1,18 @@
 package mangotech.test1.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
  * @author Hung Hoang
  */
+@Getter
+@Setter
 @Entity
 @Table(name = "groups")
 public class Group implements Serializable {
@@ -24,12 +26,12 @@ public class Group implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     @OrderBy("id DESC")
     @JsonBackReference
-    private Set<User> userList = new HashSet<>();
+    private Set<User> userList;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "group_role",
             joinColumns = @JoinColumn(name = "group_id"),
@@ -41,38 +43,6 @@ public class Group implements Serializable {
 
     public Group(String name){
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Set<User> getUserList() {
-        return userList;
-    }
-
-    public void setUserList(Set<User> userList) {
-        this.userList = userList;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
     }
 
     @Override
@@ -92,8 +62,6 @@ public class Group implements Serializable {
         if (getClass() != obj.getClass())
             return false;
         User other = (User) obj;
-        if (id != other.getId())
-            return false;
-        return true;
+        return id == other.getId();
     }
 }

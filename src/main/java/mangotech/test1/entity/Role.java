@@ -1,10 +1,10 @@
 package mangotech.test1.entity;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +12,8 @@ import java.util.Set;
  * @version 1.0
  */
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "roles")
 public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -25,7 +26,7 @@ public class Role implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "roles", cascade = CascadeType.MERGE, fetch =FetchType.EAGER)
+    @ManyToMany(mappedBy = "roles")
     private Set<Group> groups;
 
     public Role(){}

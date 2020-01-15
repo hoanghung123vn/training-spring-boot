@@ -49,9 +49,6 @@ public class DataSeedling implements ApplicationListener<ContextRefreshedEvent> 
             Set<Role> roles = new HashSet<>();
             roles.add(roleRepository.findByName(Const.ROLE_USER));
             group.setRoles(roles);
-            for(Role role: group.getRoles()){
-                System.out.println(role.getName());
-            }
             groupRepository.save(group);
         }
         if(groupRepository.findByName(Const.GROUP_ADMIN) == null){
