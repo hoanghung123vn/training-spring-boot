@@ -13,4 +13,8 @@ public class Const {
     public static final int ACTIVE_STATUS = 1;
     // Status blocked
     public static final int BLOCKED_STATUS = 0;
+    // Message success
+    public static final String SUCCESS_MESSAGE = "success";
+    // Message fail
+    public static final String FAIL_MESSAGE = "fail";
 }

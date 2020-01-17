@@ -1,7 +1,7 @@
 package mangotech.test1.config;
 
 import mangotech.test1.authentication.JwtAuthenticationFilter;
-import mangotech.test1.service.UserDetailServiceImpl;
+import mangotech.test1.service.user.UserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

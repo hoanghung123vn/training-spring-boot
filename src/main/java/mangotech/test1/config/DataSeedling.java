@@ -66,6 +66,7 @@ public class DataSeedling implements ApplicationListener<ContextRefreshedEvent> 
             Group group = groupRepository.findByName(Const.GROUP_USER);
             user.setGroup(group);
             user.setCreatedAt(new Date());
+            user.setUpdatedAt(new Date());
             user.setPassword(passwordEncoder.encode("123456"));
             userRepository.save(user);
         }
@@ -76,6 +77,7 @@ public class DataSeedling implements ApplicationListener<ContextRefreshedEvent> 
             Group group = groupRepository.findByName(Const.GROUP_ADMIN);
             user.setGroup(group);
             user.setCreatedAt(new Date());
+            user.setUpdatedAt(new Date());
             user.setPassword(passwordEncoder.encode("123456"));
             userRepository.save(user);
         }

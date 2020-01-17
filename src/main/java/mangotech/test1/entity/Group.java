@@ -31,7 +31,7 @@ public class Group implements Serializable {
     @JsonBackReference
     private Set<User> userList;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "group_role",
             joinColumns = @JoinColumn(name = "group_id"),

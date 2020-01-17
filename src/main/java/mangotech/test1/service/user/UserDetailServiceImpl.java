@@ -1,4 +1,4 @@
-package mangotech.test1.service;
+package mangotech.test1.service.user;
 
 import mangotech.test1.entity.CustomUserDetails;
 import mangotech.test1.entity.User;
