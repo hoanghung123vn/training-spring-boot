@@ -1,6 +1,6 @@
 package mangotech.test1.exception;
 
-import mangotech.test1.payload.ErrorResponse;
+import mangotech.test1.payload.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,8 +14,8 @@ public class ApiExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponse handleAllException(Exception ex, WebRequest request) {
-        return new ErrorResponse(500, ex.getLocalizedMessage());
+    public ApiResponse handleAllException(Exception ex, WebRequest request) {
+        return new ApiResponse(500, ex.getLocalizedMessage());
     }
 
     /**
@@ -23,7 +23,7 @@ public class ApiExceptionHandler {
      */
     @ExceptionHandler(IndexOutOfBoundsException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleOutOfBoundException(Exception ex, WebRequest request) {
-        return new ErrorResponse(400, "Đối tượng không tồn tại");
+    public ApiResponse handleOutOfBoundException(Exception ex, WebRequest request) {
+        return new ApiResponse(400, "Đối tượng không tồn tại");
     }
 }
