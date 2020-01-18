@@ -9,7 +9,6 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 public class RoleDto {
-    @NotBlank
     private int id;
 
     @NotBlank

@@ -18,4 +18,6 @@ public interface UserService {
     void deleteById(int id);
 
     UserDto save (UserDto user);
+
+    void setGroup(int user_id, int group_id);
 }

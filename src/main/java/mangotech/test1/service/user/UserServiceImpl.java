@@ -2,6 +2,7 @@ package mangotech.test1.service.user;
 
 import mangotech.test1.config.Const;
 import mangotech.test1.dto.UserDto;
+import mangotech.test1.entity.Group;
 import mangotech.test1.entity.User;
 import mangotech.test1.repository.GroupRepository;
 import mangotech.test1.repository.UserRepository;
@@ -59,5 +60,12 @@ public class UserServiceImpl implements UserService {
         newUser.setUpdatedAt(new Date());
         userRepository.save(newUser);
         return new UserDto(newUser.getId(), newUser.getName(), "no explicit", newUser.getStatus(), newUser.getCreatedAt(), newUser.getUpdatedAt(), newUser.getGroup().getId());
+    }
+
+    @Override
+    public void setGroup(int user_id, int group_id) {
+        User user = userRepository.findById(user_id).get();
+        Group group = groupRepository.findById(group_id).get();
+        user.setGroup(group);
     }
 }

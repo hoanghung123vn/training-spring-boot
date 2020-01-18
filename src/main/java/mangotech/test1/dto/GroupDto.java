@@ -10,12 +10,10 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 public class GroupDto {
-    @NotBlank
     private int id;
 
     @NotBlank
     private String name;
 
-    @NotBlank
-    private Set<RoleDto> roles;
+    private Set<Integer> roles_id;
 }
